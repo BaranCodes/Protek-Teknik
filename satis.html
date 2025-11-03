@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Satış - Protek Teknik Servis</title>
+
+  <!-- Basit, index ile uyumlu değişkenler ve temel stiller (hafifletilmiş) -->
+  <style>
+    :root{
+      --bg-dark:#00054e;--brand:#1bb6b6;--brand-2:#2a3d70;--text:#fff;
+      --card: rgba(20,20,107,0.14);--glass: rgba(10,18,60,0.06);
+      --border: rgba(10,18,60,0.10);--radius:12px;--max-width:1180px;--ease:cubic-bezier(.2,.9,.2,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,var(--bg-dark), #362dad);color:var(--text);min-height:100vh}
+    .container{max-width:var(--max-width);margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:transparent;position:sticky;top:0;backdrop-filter:blur(6px)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:flex;align-items:center;justify-content:center}
+    nav{display:flex;gap:12px;padding-left:10px}
+    nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:10px;font-weight:600;background:transparent}
+    h1{font-family:Poppins, sans-serif;font-weight:700}
+    .hero{padding:28px 0 6px;text-align:center}
+    .listings{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:18px}
+    .card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:transform .18s var(--ease);backdrop-filter:blur(6px)}
+    .card:hover{transform:translateY(-6px)}
+    /* portrait-friendly images: prefer vertical aspect ratio while remaining responsive */
+    .card-figure{
+      aspect-ratio: 3 / 4;
+      width:100%;
+      max-height:540px;
+      overflow:hidden;
+      position:relative;
+      display:block;
+      background:linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+    }
+    .card-figure img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+    }
+    @media (max-width:900px){
+      .card-figure{aspect-ratio: 4 / 5; max-height:460px}
+    }
+    .price-badge{position:absolute;right:12px;top:12px;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#022;padding:8px 12px;border-radius:10px;font-weight:800}
+    .card-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+    .card-title{font-weight:800;font-size:1.02rem;color:#fff}
+    .card-desc{color:#dfeeff;font-size:0.95rem}
+    .features{display:flex;flex-wrap:wrap;gap:8px;font-size:0.9rem;color:#dfeeff}
+    .feature{background:var(--glass);padding:6px 8px;border-radius:8px}
+    .card-actions{margin-top:auto;display:flex;gap:10px;align-items:center}
+    .btn{padding:10px 14px;border-radius:10px;font-weight:800;border:0;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#022}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+    footer{padding:24px 0;text-align:center;color:#dfeeff;opacity:0.9}
+    @media (max-width:900px){ .listings{grid-template-columns:1fr} .card-figure{height:180px} nav{display:none} }
+  </style>
+</head>
+<body>
+  <header class="container" role="banner">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="true">
+        <img src="protek3.png" alt="logo" style="width:28px;height:28px;object-fit:contain;display:block">
+      </div>
+      <div>
+        <h1 style="margin:0;font-size:1rem">Satış — Protek Teknik</h1>
+        <div style="font-size:0.85rem;color:#9fb2c3;margin-top:4px">Seçkin ilanlar — hemen teklif alın</div>
+      </div>
+    </div>
+
+    <nav role="navigation" aria-label="Ana menü">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="satis.html" aria-current="page">Satış</a>
+      <a href="index.html#hizmetler">Hizmetler</a>
+      <a href="index.html#iletisim">İletişim</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p style="color:#cfe8ff;font-weight:700;margin-bottom:8px">Öne Çıkan İlanlar</p>
+      <h2 style="font-family:Poppins, sans-serif;color:var(--brand);margin-bottom:6px">Hızlı, güvenilir ve şeffaf satışlar</h2>
+      <p style="max-width:760px;margin:0 auto;color:#dfeeff">Aşağıdaki tekliflerde fiyat, fotoğraf ve kısa açıklama yer alır. Detaylı teklif için "Teklif Al" butonuna tıklayarak bizimle iletişime geçin.</p>
+    </section>
+
+    <section class="listings" aria-label="İlanlar">
+      <!-- Listing 1 -->
+      <article class="card">
+        <div class="card-figure">
+          <img src="minerwa.png" alt="Minerwa ilan görseli" loading="lazy">
+          <div class="price-badge">₺33.000</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Minerwa Yoğuşmalı Kombi 25/31 KW</div>
+          <div class="card-desc">Minerwa, ödüllü tasarımı ve Smart Gas teknolojisiyle yaşam alanlarınıza hem güvenlik hem de konfor getiriyor. Yüksek verimliliği ve tasarruf odaklı yapısıyla, enerji kullanımında fark yaratıyor</div>
+          <div class="features">
+            <span class="feature">2 Yıl Garanti</span>
+            <span class="feature">Sıfır Cihaz</span>
+            <span class="feature">Yerinde Hizmet</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="index.html#iletisim">Teklif Al</a>
+            <a class="btn btn-ghost" href="mailto:iletisim@protekteknikservis.com">E-posta</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Listing 2 -->
+      <article class="card">
+        <div class="card-figure">
+          <img src="enerwa.png" alt="Enerwa ilan görseli" loading="lazy">
+          <div class="price-badge">₺26.500</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Enerwa Yoğuşmalı Kombi 24/31 KW</div>
+          <div class="card-desc">Enerwa, yalnızca 288 mm derinliğe sahip kompakt tasarımıyla dar alanlarda bile kullanım kolaylığı sağlar. Yeni nesil "gaz adaptif sistem" teknolojisiyle güvenliği, konforu ve tasarrufu bir arada sunarak enerji kullanımında yeni bir standart belirler.</div>
+          <div class="features">
+            <span class="feature">2 Yıl Garanti</span>
+            <span class="feature">Yerinde Değerlendirme</span>
+            <span class="feature">Sıfır Cihaz</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="index.html#iletisim">Teklif Al</a>
+            <a class="btn btn-ghost" href="mailto:iletisim@protekteknikservis.com">E-posta</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Listing 3 -->
+      <article class="card">
+        <div class="card-figure">
+          <img src="enerwa_plus.png" alt="Enerwa Plus ilan görseli" loading="lazy">
+          <div class="price-badge">₺29.000</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Enerwa Plus Yoğuşmalı Kombi 28/35 KW</div>
+          <div class="card-desc">Yeni nesil "gaz adaptif sistem" teknolojisiyle donatılan bu kombi, farklı kapasite ihtiyaçlarına uygun çözümler sunar. Hem güvenli hem konforlu hem de tasarruflu bir yanma sağlayarak modern ısınma sistemlerinde fark yaratır.</div>
+          <div class="features">
+            <span class="feature">2 Yıl Garanti</span>
+            <span class="feature">Yerinde Tasarruf</span>
+            <span class="feature">Sıfır Cihaz</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="index.html#iletisim">Teklif Al</a>
+            <a class="btn btn-ghost" href="mailto:iletisim@protekteknikservis.com">E-posta</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Listing 4 -->
+      <article class="card">
+        <div class="card-figure">
+          <img src="ewa.png" alt="Ewa ilan görseli" loading="lazy">
+          <div class="price-badge">₺22.000</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Ewa Yoğuşmalı Kombi 20/24 kw</div>
+          <div class="card-desc">Ewa kombiler, kompakt ve estetik tasarımıyla yaşam alanlarınıza şıklık katarken, "Smart Gas" teknolojisiyle güvenli, tasarruflu ve çevre dostu bir yanma deneyimi sunar.</div>
+          <div class="features">
+            <span class="feature">2 Yıl Garanti</span>
+            <span class="feature">Enerji Tasarrufu</span>
+            <span class="feature">Sıfır Cihaz</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="index.html#iletisim">Teklif Al</a>
+            <a class="btn btn-ghost" href="mailto:iletisim@protekteknikservis.com">E-posta</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Listing 5 (yeni) -->
+      <article class="card">
+        <div class="card-figure">
+          <img src="termostat.png"Sigma / Yeni ilan görseli" loading="lazy">
+          <div class="price-badge">₺3.500</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">KABLOSUZ* Dijital Oda Termostatı</div>
+          <div class="card-desc">Evinizin sıcaklığını akıllıca kontrol edin!Bu oda termostatı sayesinde kombiniz gereksiz yere çalışmaz, doğalgaz faturanızdan %30’a varan tasarruf sağlarsınız.</div>
+          <div class="features">
+            <span class="feature">2 Yıl Garanti</span>
+            <span class="feature">Kablosuz</span>
+            <span class="feature">Fatura Tasarrufu</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="index.html#iletisim">Teklif Al</a>
+            <a class="btn btn-ghost" href="mailto:iletisim@protekteknikservis.com">E-posta</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© 2025 Protek Teknik Servis</div>
+        <div style="color:#9fb2c3">İlanlar hakkında soru için: <a href="mailto:iletisim@protekteknikservis.com" style="color:var(--brand)">iletisim@protekteknikservis.com</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

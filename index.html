@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Protek Teknik Servis | Lüleburgaz kombi, klima, petek temizliği, bakım ve montaj hizmetlerinde uzman ekibimizle hızlı ve garantili çözümler sunuyoruz.">
+  <title>Protek Teknik Servis | Kombi & Klima Uzmanı</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-dark: #00054e;
+      --bg-mid:  #362dad;
+      --bg-mid-dark: rgba(6,12,50,0.72); /* ortadaki geçiş için koyu ton */
+      --text: #ffffff; /* tüm metinler için beyaz */
+      --card-lacivert: rgba(20,20,107,0.20);   /* daha belirgin kart tonu */
+      --card-lacivert-hover: rgba(20,20,107,0.28); /* hover için daha belirgin */
+      --card-shadow-strong: 0 18px 48px rgba(3,18,55,0.48);
+      --border-dark: rgba(10,18,60,0.18);
+      --brand:   #1bb6b6;
+      --brand-2: #2a3d70;
+      --accent:  #ffffff;
+      --muted:   #00485a;
+      /* yeni koyu lacivert transparan tonları */
+      --glass-dark: rgba(10,18,60,0.06);
+      --glass-dark-2: rgba(10,18,60,0.10);
+      --border-dark: rgba(10,18,60,0.10);
+      --glass:   rgba(111,236,230,0.04);
+      --card-shadow: 0 10px 36px rgba(5,110,110,0.28);
+      --radius: 12px;
+      --max-width: 1180px;
+      --ease: cubic-bezier(.2,.9,.2,1);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      /* ortadaki açık band koyu lacivert olarak değiştirildi */
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-mid-dark) 48%, var(--bg-mid-dark) 52%, var(--bg-mid) 100%);
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      background-size:cover;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      overflow-x:hidden;
+      padding-top:78px;
+      transition: background .45s var(--ease), color .35s var(--ease);
+      /* removed translateZ(0) so fixed elements stay fixed to viewport */
+      will-change: background;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px;}
+
+    /* Header */
+    header{
+      width:100%;
+      position:fixed; top:0; left:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 24px;
+      /* açık beyaz transparan kaldırıldı, koyu lacivert tonları kullanıldı */
+      background: linear-gradient(180deg, var(--glass-dark), rgba(6,12,50,0.04));
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid var(--border-dark);
+      z-index:1200;
+      transition: box-shadow .25s var(--ease), background .25s var(--ease);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:44px;height:44px;border-radius:8px;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;
+      box-shadow:0 8px 20px rgba(11,96,176,0.10);
+      font-family:"Poppins",sans-serif;font-size:1.05rem;
+      transition: transform .18s var(--ease);
+    }
+    .logo:active{transform:scale(.98)}
+    header h1{font-size:1rem;font-weight:700;letter-spacing:0.4px;color:#fff}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{
+      color:var(--text);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;
+      transition:background .18s var(--ease), color .18s var(--ease), transform .18s var(--ease);
+    }
+    nav a:hover{background:var(--glass-dark-2);color:var(--text);transform:translateY(-3px)}
+    .cta-header{
+      background: linear-gradient(90deg,var(--accent), #ff9b3a);
+      color:#072038; padding:9px 14px;border-radius:12px;font-weight:800;
+      box-shadow:0 10px 24px rgba(255,184,77,0.08);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .cta-header:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(255,184,77,0.12)}
+
+    /* Mobile */
+    .menu-toggle{display:none;background:transparent;border:none;color:var(--muted);font-size:24px}
+    .mobile-nav{display:none;flex-direction:column;gap:10px;padding:12px;background:rgba(0,0,0,0.18);border-radius:10px;margin-top:8px}
+
+    /* Hero */
+    .hero{margin-top:12px;padding:56px 0 72px;position:relative;}
+    .hero-grid{display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center;max-width:var(--max-width);margin:0 auto;padding:0 20px;}
+    .hero-card{
+      background: var(--card-lacivert);
+      border-radius:var(--radius);padding:32px;box-shadow:var(--card-shadow-strong);
+      backdrop-filter: blur(6px);border:1px solid var(--border-dark);
+      transition: background .3s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);
+    }
+    .hero-card:hover{
+      background: var(--card-lacivert-hover);
+      transform:translateY(-4px);
+      box-shadow:0 20px 44px rgba(3,18,55,0.46);
+    }
+    .hero h2{font-family:"Poppins",sans-serif;font-weight:800;font-size:2.1rem;margin-bottom:10px;color:var(--brand);letter-spacing:-0.2px;}
+    .hero p.lead{color:var(--text);margin-bottom:14px;font-size:1.02rem}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{border:0;padding:12px 18px;border-radius:12px;font-weight:800;cursor:pointer;transition:transform .18s var(--ease), box-shadow .18s var(--ease);}
+    .btn-primary{background: linear-gradient(90deg,var(--brand), var(--brand-2));color:var(--text);box-shadow:0 10px 28px rgba(11,96,176,0.14);border:1px solid var(--border-dark)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(11,96,176,0.14)}
+    .btn-ghost{background:transparent;border:1px solid var(--border-dark);color:var(--text);font-weight:700}
+    /* make contact-card action links appear as boxed buttons and align nicely */
+    .contact-card .btn { display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
+    .contact-card a.btn { color: inherit; }
+
+    /* Visual */
+    .hero-visual{display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;text-align:center;}
+    .visual-card{
+      background: var(--card-lacivert);
+      width:100%;height:320px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:0 8px 28px rgba(3,18,55,0.24);
+      border:1px solid var(--border-dark);
+      backdrop-filter: blur(6px);
+      transition: background .3s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .visual-card:hover{ background: var(--card-lacivert-hover); transform:translateY(-4px); box-shadow:0 20px 44px rgba(3,18,55,0.46); }
+    .visual-card img{max-width:100%;height:auto;filter:contrast(1.03) saturate(1.03);opacity:0.99}
+
+    /* Services - Yumuşak, tek tonlu aralık */
+    section.services{padding:68px 0; background:transparent;}
+    .services-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:var(--max-width);margin:18px auto 0;padding:20px;
+      background: linear-gradient(180deg, rgba(2,20,20,0.01), rgba(2,20,20,0.01));
+      border-radius:14px;
+      border:1px solid var(--border-dark);
+    }
+    .service{
+      background: var(--card-lacivert);
+      border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start;
+      transition:background .3s var(--ease), transform .28s var(--ease), box-shadow .28s var(--ease);
+      border:1px solid var(--border-dark);
+      backdrop-filter: blur(6px);
+    }
+    .service:hover{
+      background: var(--card-lacivert-hover);
+      transform:translateY(-6px);
+      box-shadow:0 18px 36px rgba(3,18,55,0.42);
+    }
+    .service img{width:56px;height:56px;flex-shrink:0;filter:grayscale(1) brightness(1.12) contrast(0.95)}
+    .service h3{font-size:1.05rem;margin-bottom:6px;color:#fff}
+    .service p{color:var(--text);font-size:.95rem;opacity:0.95}
+
+    /* About */
+    .about{padding:72px 0;background:transparent;}
+    .about-inner{display:flex;gap:28px;align-items:center;max-width:var(--max-width);margin:0 auto;padding:18px 20px}
+    .about-figure{
+      background: var(--card-lacivert);
+      width:360px;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);
+      border:1px solid var(--border-dark);backdrop-filter: blur(6px);transition:background .3s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .about-figure:hover{ background: var(--card-lacivert-hover); transform:translateY(-4px); box-shadow:0 20px 44px rgba(3,18,55,0.46); }
+
+    /* Contact */
+    .contact{padding:72px 0;background:transparent;}
+    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:30px;max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+    /* Footer */
+    footer{margin-top:40px;padding:26px 20px;background:transparent;text-align:center;color:var(--text);border-top:1px solid var(--border-dark)}
+
+    /* Reveal / responsive */
+    .fade{opacity:0;transform:translateY(18px);transition:all .7s var(--ease)}
+    .fade.show{opacity:1;transform:none}
+
+    @media (max-width:1000px){
+      .hero-grid{grid-template-columns:1fr 1fr}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+      .about-inner{flex-direction:column-reverse;gap:18px}
+    }
+    @media (max-width:760px){
+      header{padding:10px 16px}
+      .menu-toggle{display:block}
+      nav{display:none}
+      .mobile-nav{display:flex}
+      .hero-grid{grid-template-columns:1fr;gap:18px}
+      .visual-card{height:220px}
+      .services-grid{grid-template-columns:1fr;padding:14px}
+      .logo{width:40px;height:40px}
+      body{padding-top:72px}
+    }
+
+    /* WhatsApp floating button (uyumlu renkler) */
+    .whatsapp-fab{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:99999; /* üstte kalması için yüksek değer */
+      display:flex;
+      align-items:center;
+      gap:10px;
+      pointer-events:auto;
+      will-change: transform, opacity;
+      touch-action: manipulation;
+    }
+    .whatsapp-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#fff;border:0;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(5,110,110,0.08);cursor:pointer;transition:transform .15s var(--ease), box-shadow .15s var(--ease)}
+    .whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(11,96,176,0.12)}
+    .whatsapp-bubble{display:none;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:var(--text);padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:0 8px 20px rgba(7,94,84,0.10);text-decoration:none;border:1px solid var(--border-dark)}
+    @media (min-width:520px){ .whatsapp-bubble{display:inline-block} }
+    .whatsapp-anim{animation:whatsapp-pulse 2.8s infinite}
+    @keyframes whatsapp-pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+  </style>
+</head>
+<body>
+
+  <header class="container" role="banner">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="false">
+        <img src="protek3.png" alt="Protek Teknik logo" loading="lazy" style="width:28px;height:28px;object-fit:contain;display:block">
+      </div>
+      <div>
+        <h1 style="margin:0;font-size:1.1rem;font-family:'Poppins',sans-serif;">Protek Teknik Servis</h1>
+        <div style="font-size:0.85rem;color:var(--muted);margin-top:2px">Kombi · Klima · Petek</div>
+      </div>
+    </div>
+
+    <nav role="navigation" aria-label="Ana menü">
+      <a href="#hizmetler" class="nav-link">Hizmetler</a>
+      <a href="satis.html" class="nav-link">Satış</a>
+      <a href="#hakkimizda" class="nav-link">Hakkımızda</a>
+      <a href="#iletisim" class="nav-link">İletişim</a>
+      <a class="cta-header" href="tel:02884173334">0 (288) 417 33 34</a>
+    </nav>
+
+    <button class="menu-toggle" aria-expanded="false" aria-label="Menüyü aç" id="menuToggle">☰</button>
+  </header>
+
+  <!-- Mobile nav (appears under header on small screens) -->
+  <div class="container" id="mobileNavWrap" style="display:none;padding-top:6px">
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="satis.html">Satış</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#iletisim">İletişim</a>
+      <a href="tel:02884173334" class="cta-header" style="width:fit-content">Ara</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero" aria-label="Tanıtım">
+      <div class="hero-grid">
+        <div class="hero-card fade">
+          <h2>Güvenilir kombi ve klima servisiniz</h2>
+          <p class="lead">Lüleburgaz merkezli Protek Teknik; montaj, bakım, petek yıkama ve acil müdahale hizmetlerinde uzman ekibiyle yanınızda.</p>
+          <p class="lead">Kırklareli Bölgesi, Alpullu, Hayrabolu, Büyükmandıra, Pehlivanköy, Babaeski, Vize, Pınarhisar</p>
+
+          <div class="buttons">
+            <button class="btn btn-primary" onclick="document.getElementById('iletisim').scrollIntoView({behavior:'smooth'})">Hemen Arayın</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('hizmetler').scrollIntoView({behavior:'smooth'})">Hizmetlerimizi İnceleyin</button>
+          </div>
+
+          <ul style="margin-top:18px;color:var(--text);list-style:none;padding-left:0;display:flex;gap:12px;flex-wrap:wrap">
+            <li style="background:var(--glass-dark-2);padding:8px 10px;border-radius:10px;font-weight:600">Garantili İşçilik</li>
+            <li style="background:var(--glass-dark-2);padding:8px 10px;border-radius:10px;font-weight:600">Hızlı Servis</li>
+            <li style="background:var(--glass-dark-2);padding:8px 10px;border-radius:10px;font-weight:600">Kesin Çözüm</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual fade">
+          <div class="visual-card" role="img" aria-label="Kombi ve klima görseli">
+            <img src="protek1.png" alt="Servis görseli" loading="lazy">
+          </div>
+          <div style="display:flex;gap:12px;width:100%;justify-content:center;">
+            <div style="background:var(--glass-dark-2);padding:10px 12px;border-radius:10px;font-weight:700;color:var(--text)">Hemen Randevu</div>
+            <div style="background:var(--glass-dark-2);padding:10px 12px;border-radius:10px;font-weight:700;color:var(--text)">Acil Çağrı</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hizmetler" class="services" aria-labelledby="hizmetler-baslik">
+      <div class="container">
+        <h2 id="hizmetler-baslik" style="color:var(--accent);font-family:'Poppins',sans-serif;font-size:1.6rem;margin-bottom:18px">Hizmetlerimiz</h2>
+
+        <div class="services-grid">
+          <div class="service fade">
+            <img src="https://cdn-icons-png.flaticon.com/512/2882/2882901.png" alt="Kombi">
+            <div>
+              <h3>Kombi Bakımı & Onarım</h3>
+              <p>Her marka kombi için periyodik bakım, arıza tespiti ve orijinal parça onarımı.</p>
+            </div>
+          </div>
+
+          <div class="service fade">
+            <img src="https://cdn-icons-png.flaticon.com/512/1684/1684375.png" alt="Petek">
+            <div>
+              <h3>Petek Yıkama</h3>
+              <p>Profesyonel kimyasal temizleme ile petek verimini artırıp yakıt tasarrufu sağlayın.</p>
+            </div>
+          </div>
+
+          <div class="service fade">
+            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="Montaj">
+            <div>
+              <h3>Kombi Montajı</h3>
+              <p>Yeni kurulumlarda güvenli, kurallara uygun montaj ve devreye alma hizmeti.</p>
+            </div>
+          </div>
+
+          <div class="service fade">
+            <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Klima">
+            <div>
+              <h3>Klima Bakım & Gaz Dolumu</h3>
+              <p>Periyodik bakım, bakteri temizliği ve doğru gaz dolumu ile performans geri kazanımı.</p>
+            </div>
+          </div>
+
+          <div class="service fade">
+            <img src="https://cdn-icons-png.flaticon.com/512/2933/2933816.png" alt="Termostat">
+            <div>
+              <h3>Oda Termostatı Kurulumu</h3>
+              <p>Akıllı termostat montajı ve enerji tasarrufu için optimizasyon desteği.</p>
+            </div>
+          </div>
+
+          <div class="service fade">
+            <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png" alt="Acil">
+            <div>
+              <h3>Acil Servis</h3>
+              <p>Arızanıza hızlı müdahale ile kesintisiz konfor sağlıyoruz.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hakkimizda" class="about fade" aria-labelledby="hakkimizda-baslik">
+      <div class="about-inner container">
+        <div class="about-text">
+          <h2 id="hakkimizda-baslik" style="font-family:'Poppins',sans-serif;color:var(--accent);margin-bottom:12px">Hakkımızda</h2>
+          <p style="color:#dfeeff;margin-bottom:12px"><strong>Protek Teknik Servis</strong>, kombi ve klima alanında yılların deneyimini Lüleburgaz'a taşıyan yerel bir teknik servistir. Müşteri memnuniyeti, hızlı çözüm ve kaliteli işçilik önceliklerimizdir.</p>
+          <p style="color:#dfeeff">Sorumlu kişi <strong>Serkan Çavuşoğlu</strong> liderliğindeki ekibimiz; güvenlik, performans ve tasarrufu gözeterek her projeye profesyonel yaklaşır.</p>
+        </div>
+
+        <div class="about-figure">
+          <img src="protek2.png" alt="Ekip resmi" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim" class="contact fade" aria-labelledby="iletisim-baslik">
+      <div class="container">
+        <h2 id="iletisim-baslik" style="font-family:'Poppins',sans-serif;color:var(--accent);margin-bottom:18px">İletişim</h2>
+
+        <div class="contact-grid" style="display:grid;grid-template-columns:1fr 420px;gap:30px;max-width:var(--max-width);margin:0 auto;padding:0 20px">
+          <!-- Left: Temel iletişim bilgileri ve hızlı çağrı/WhatsApp -->
+          <div class="contact-card" style="display:flex;flex-direction:column;gap:12px;">
+            <p style="font-weight:700;font-size:1.05rem;margin-bottom:4px">Bize Ulaşın</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <a href="tel:02884173334" style="color:var(--accent);text-decoration:none;font-weight:800;font-size:1.05rem">📞 0 (288) 417 33 34</a>
+              <a href="mailto:iletisim@protekteknikservis.com" style="color:var(--accent);text-decoration:none;font-weight:600">✉️ iletisim@protekteknikservis.com</a>
+              <div style="color:#dfeeff">📍 Yıldız Mah. Cermen Cad. No:51/A, Lüleburgaz</div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+              <a class="btn btn-primary" href="tel:02884173334" aria-label="Ara">Hemen Ara</a>
+              <a class="btn btn-primary" href="mailto:iletisim@protekteknikservis.com?subject=Sat%C4%B1%C5%9F%20Talebi" >E-posta ile teklif talep et</a>
+              <a class="btn btn-primary" href="https://wa.me/902884173334?text=Merhaba%20Protek%20Teknik%2C%20sat%C4%B1n%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">WhatsApp ile teklif</a>
+            </div>
+
+            <div style="margin-top:12px;color:#cfe8ff">
+              <p style="font-weight:700;margin-bottom:6px">Sorumlu</p>
+              <p><strong>Serkan Çavuşoğlu</strong></p>
+              <p style="margin-top:8px;font-size:0.95rem;color:#9fb2c3">Çalışma Saatleri: Pzt - Cmt 11:00 – 21:00</p>
+            </div>
+          </div>
+
+          <!-- Right: Hızlı Talep / Teklif butonları (form yerine eylem odaklı kart) -->
+          <div class="contact-card" aria-hidden="false" style="display:flex;flex-direction:column;gap:12px;">
+            <p style="font-weight:700;font-size:1.05rem;margin-bottom:4px">Hızlı Talep</p>
+            <p style="color:#dfeeff;margin-bottom:6px">Teklif almak veya ürün/satış soruları için aşağıdaki hızlı yolları kullanabilirsiniz. Form yerine doğrudan iletişim ile daha hızlı dönüş sağlanır.</p>
+
+            <ul style="list-style:none;padding-left:0;margin:0;display:flex;flex-direction:column;gap:8px">
+              <li><a class="btn btn-primary" href="mailto:iletisim@protekteknikservis.com?subject=Sat%C4%B1%C5%9F%20Talebi&body=Merhaba%2C%20%0A%0A%20%20Firma%20ve%20Ad%3A%20%0A%20%20Telefon%3A%20%0A%20%20İlan%3A%20%0A%20%20Notlar%3A%20" >E-posta ile teklif talep et</a></li>
+              <li><a class="btn btn-primary" href="https://wa.me/902884173334?text=Merhaba%20Protek%20Teknik%2C%20sat%C4%B1n%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">WhatsApp ile teklif</a></li>
+              <li><a class="btn btn-primary" href="tel:02884173334">Hemen Ara</a></li>
+            </ul>
+
+            <div style="margin-top:8px;color:#9fb2c3;font-size:0.92rem">Gizlilik: Gönderdiğiniz bilgiler yalnızca talebiniz için kullanılacaktır.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Maps Section -->
+    <section id="google-maps" class="maps-section">
+      <div class="container">
+        <h2 style="color: var(--accent); font-family: 'Poppins', sans-serif; text-align: center; margin-bottom: 20px;">Adresimiz</h2>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3130.123456789!2d27.123456!3d41.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b1234567890abc%3A0x1234567890abcdef!2sY%C4%B1ld%C4%B1z%20Mah.%20Cermen%20Cad.%20No%3A51%2FA%2C%20L%C3%BCleburgaz!5e0!3m2!1str!2str!4v1691234567890!5m2!1str!2str"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div style="max-width:var(--max-width);margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>© 2025 Protek Teknik Servis</div>
+      <div style="color:var(--text)">Tüm hakları saklıdır · Protek Teknik</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button -->
+  <div class="whatsapp-fab" aria-hidden="false">
+    <!-- doğrudan ön-dolu mesaj açar; rel ve noopener güvenlik eklendi -->
+    <a id="waBubble" class="whatsapp-bubble" href="https://wa.me/902884173334?text=Merhaba%20Protek%20Teknik%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">0 (288) 417 33 34 ile WhatsApp</a>
+
+    <a id="waBtn" class="whatsapp-btn whatsapp-anim" href="https://wa.me/902884173334?text=Merhaba%20Protek%20Teknik%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile mesaj gönder">
+      <!-- WhatsApp SVG icon -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.52 3.48A11.86 11.86 0 0012 0C5.37 0 .02 5.35.02 12c0 2.11.55 4.18 1.6 6.01L0 24l6.28-1.62A11.86 11.86 0 0012 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.2-3.48-8.52z" fill="#25D366"/>
+        <path d="M17.06 14.61c-.29-.15-1.71-.84-1.97-.93-.26-.09-.45-.14-.64.14s-.73.93-.9 1.12c-.17.19-.34.21-.63.07-1.7-.86-2.82-1.54-3.95-3.48-.29-.51.29-.48.84-1.6.09-.19.05-.36-.02-.51-.07-.16-.64-1.53-.88-2.09-.23-.54-.47-.46-.64-.47-.17-.01-.37-.01-.57-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.45s1.02 2.84 1.16 3.04c.14.19 2 3.06 4.84 4.29 2.44 1.06 2.44.71 2.88.67.44-.04 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.23-.15-.52-.3z" fill="#fff"/>
+      </svg>
+    </a>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileWrap = document.getElementById('mobileNavWrap');
+    menuToggle && menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      const isVisible = mobileWrap.style.display === 'block';
+      mobileWrap.style.display = isVisible ? 'none' : 'block';
+    });
+
+    // Scroll reveal (IntersectionObserver)
+    const fades = document.querySelectorAll('.fade');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          observer.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.2});
+    fades.forEach(el => observer.observe(el));
+
+    // Smooth internal link scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Note: iletişim formu kaldırıldı; hızlı eylem düğmeleri (tel/mail/WhatsApp) kullanılıyor.
+
+    // WhatsApp button: already uses direct hrefs with pre-filled text; keep for accessibility
+    (function(){
+      const waNumber = '902884173334'; // 90 + 2884173334
+      const waText = 'Merhaba Protek Teknik, randevu almak istiyorum.';
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+      const btn = document.getElementById('waBtn');
+      const bubble = document.getElementById('waBubble');
+      if(btn) btn.href = waUrl;
+      if(bubble) bubble.href = waUrl;
+
+      // keyboard erişilebilirliği
+      if(btn){
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
